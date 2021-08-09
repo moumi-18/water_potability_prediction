@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Water Potability Prediction </title>
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<h1>Water Potability Prediction</h1>
+
+<p>Talkerscode helps you connect and share with the people in your life.</p>
+<img src="C:\Users\RONALD\Desktop\IMS-Classroom\Python Code\Resume Project - ML Algo\Water Quality\Deployment\webapp\water.jpg" style="width:600px;height:400px;">
+
+<div style="color:blue; float:right; width:40%">
+	<h3>Enter the Values in the provided space</h3>
+    	<form action="{{url_for('predict')}}" method="post">
+	        <h4> pH value: </h4>
+		<input type="text" name="ph" placeholder="" required="required">
+		<h4> Hardness value: </h4>
+		<input type="text" name="hardness" placeholder="" required="required">
+		<br>
+		<h4> Solids value: </h4>
+		<input type="text" name="solids" placeholder="" required="required">
+		<br>
+		<h4> Chloramines value: </h4>
+		<input type="text" name="chloramines" placeholder="" required="required">
+		<br>
+		<h4> Sulphate value: </h4>
+		<input type="text" name="sulfate" placeholder="" required="required">
+		<br>
+		<h4> Enter Conductivity value: </h4>
+		<input type="text" name="conductivity" placeholder="" required="required">
+		<br>
+		<h4> Organic Carbon value: </h4>
+		<input type="text" name="organic_carbon" placeholder="" required="required">
+		<br>
+		<h4> Trihalomethanes value: </h4>
+		<input type="text" name="trihalomethanes" placeholder="" required="required">
+		<br>
+		<h4> Turbidity value: </h4>
+		<input type="text" name="turbidity" placeholder="" required="required">
+		<br>
+		<br>
+		<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+	</form>
+      	<br>
+	<br>
+	
+        	"  {{ prediction_text }} "
+
+	
+</div>
+</body>
+</html>
