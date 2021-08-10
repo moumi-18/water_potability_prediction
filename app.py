@@ -1,9 +1,9 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, request, url_for
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('water_portability_model_deploy.pkl', 'rb'))
 
 @app.route('/', methods=['GET','POST'])
 def home():
