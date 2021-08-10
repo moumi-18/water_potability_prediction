@@ -11,21 +11,40 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
-<body>
-<h1>Water Potability Prediction</h1>
-
-<p>Talkerscode helps you connect and share with the people in your life.</p>
-<img src="C:\Users\RONALD\Desktop\IMS-Classroom\Python Code\Resume Project - ML Algo\Water Quality\Deployment\webapp\water.jpg" style="width:600px;height:400px;">
-
-<div style="color:blue; float:right; width:40%">
-	<h3>Enter the Values in the provided space</h3>
-    	<form action="{{url_for('predict')}}" method="post">
+<body style="background-color:powderblue;">
+<h1 style="color:black;" align="middle">Water Potability Prediction</h1>
+<img src="{{url_for('static', filename='water.jpg')}})" align="middle" />
+<div style="color:black; float:left; width:50%">
+<p>Access to safe drinking-water is essential to health, a basic human right and a component of effective policy for health protection. This is important as a health and development issue at a national, regional and local level. In some regions, it has been shown that investments in water supply and sanitation can yield a net economic benefit, since the reductions in adverse health effects and health care costs outweigh the costs of undertaking the interventions.</p>
+<ul>
+  <li>pH value: PH is an important parameter in evaluating the acid–base balance of water. It is also the indicator of acidic or alkaline condition of water status</li>
+  <br>
+  <li>Hardness: The capacity of water to precipitate soap caused by Calcium and Magnesium. The length of time water is in contact with hardness producing material helps determine how much hardness there is in raw water</li>
+  <br>  
+  <li>TDS: Water has the ability to dissolve a wide range of inorganic and some organic minerals or salts such as potassium, calcium, sodium, bicarbonates, chlorides, magnesium, sulfates etc. These minerals produced un-wanted taste and diluted color in appearance of water.</li>
+  <br>
+  <li>Chloramines: Chloramines are most commonly formed when ammonia is added to chlorine to treat drinking water.</li>
+  <br>
+  <li>Sulfate: Sulfates are naturally occurring substances that are found in minerals, soil, and rocks. They are present in ambient air, groundwater, plants, and food. The principal commercial use of sulfate is in the chemical industry. Sulfate concentration in seawater is about 2,700 milligrams per liter (mg/L). It ranges from 3 to 30 mg/L in most freshwater supplies</li>
+  <br>
+  <li>Electrical Conductivity: Increase in ions concentration enhances the electrical conductivity of water. Generally, the amount of dissolved solids in water determines the electrical conductivity. Electrical conductivity (EC) actually measures the ionic process of a solution that enables it to transmit current.</li>
+  <br>
+  <li>Total Organic_carbon: Total Organic Carbon (TOC) in source waters comes from decaying natural organic matter (NOM) as well as synthetic sources. TOC is a measure of the total amount of carbon in organic compounds in pure water. </li>
+  <br>
+  <li>Trihalomethanes: THMs are chemicals which may be found in water treated with chlorine. The concentration of THMs in drinking water varies according to the level of organic material in the water, the amount of chlorine required to treat the water, and the temperature of the water that is being treated.</li>
+  <br>
+  <li>Turbidity: The turbidity of water depends on the quantity of solid matter present in the suspended state. It is a measure of light emitting properties of water and the test is used to indicate the quality of waste discharge with respect to colloidal matter. </li>
+</ul> 
+</div>
+<div style="color:black; float:right; width:40%">
+	<h3>Check if the water sample is potable</h3>
+    	<form action="{{ url_for('predict')}}" method="post">
 	        <h4> pH value: </h4>
 		<input type="text" name="ph" placeholder="" required="required">
 		<h4> Hardness value: </h4>
 		<input type="text" name="hardness" placeholder="" required="required">
 		<br>
-		<h4> Solids value: </h4>
+		<h4> Solids (Total dissolved solids - TDS): </h4>
 		<input type="text" name="solids" placeholder="" required="required">
 		<br>
 		<h4> Chloramines value: </h4>
@@ -34,13 +53,13 @@
 		<h4> Sulphate value: </h4>
 		<input type="text" name="sulfate" placeholder="" required="required">
 		<br>
-		<h4> Enter Conductivity value: </h4>
+		<h4> Electrical Conductivity(EC) value: </h4>
 		<input type="text" name="conductivity" placeholder="" required="required">
 		<br>
-		<h4> Organic Carbon value: </h4>
+		<h4> Total Organic Carbon(TOC) value: </h4>
 		<input type="text" name="organic_carbon" placeholder="" required="required">
 		<br>
-		<h4> Trihalomethanes value: </h4>
+		<h4> Trihalomethanes(THM) value: </h4>
 		<input type="text" name="trihalomethanes" placeholder="" required="required">
 		<br>
 		<h4> Turbidity value: </h4>
@@ -50,11 +69,12 @@
 		<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
 	</form>
       	<br>
+	
+        	"  {{ output_text }} "
+	<br>
 	<br>
 	
-        	"  {{ prediction_text }} "
-
-	
 </div>
+
 </body>
-</html>
+</html

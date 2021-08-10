@@ -1,31 +1,13 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import pickle
-
-
-# In[2]:
-
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-
-# In[3]:
-
-
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def home():
     return render_template('index.html')
-
-
-# In[7]:
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -35,20 +17,13 @@ def predict():
     prediction = model.predict(final_features)
     
     if prediction == 0:
-        return render_template('index.html', prediction_text='Water Sample is NOT POTABLE'.format(prediction),)  
+        return render_template('index.html', output_text="Water Sample is NOT POTABLE".format(prediction),)  
     else:
-        return rener_template('index.html', prediction_text='Water Sample is POTABLE'.format(prediction),)
+        return render_template('index.html', output_text="Water Sample is POTABLE".format(prediction),)
     
-
-
-# In[8]:
-
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-# In[ ]:
 
 
 
